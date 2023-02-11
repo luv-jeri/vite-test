@@ -1,0 +1,245 @@
+@import url('./animations/spin.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+
+:root {
+  color-scheme: light dark;
+  /* color: rgba(255, 255, 255, 0.87); */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+:root {
+  --clr-dark: #181823;
+  --clr-light: #E9F8F9;
+  --clr-accent: #FCA311;
+  --clr-main: #537FE7;
+  --clr-tone: #14213D;
+}
+
+:root {
+  --xxs: 0.25rem;
+  --xs: 0.5rem;
+  --sm: 1rem;
+  --md: 1.5rem;
+  --lg: 2rem;
+  --xl: 3rem;
+  --xxl: 4rem;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: var(--sm) var(--xl);
+  background-color: var(--clr-tone);
+}
+
+nav #logo {
+  display: flex;
+  align-items: center;
+  margin-right: var(--md);
+  box-shadow: 1px 1px 1px 1px var(--clr-accent);
+  padding: var(--xxs) var(--sm);
+  border-radius: var(--xxs);
+}
+
+nav #logo img {
+  width: 2rem;
+  height: 2rem;
+  margin-right: var(--xs);
+}
+
+nav #logo h6 {
+  font-size: var(--sm);
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+}
+
+nav #search {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+nav #search input {
+  width: 100%;
+  padding: var(--sm) var(--md);
+  border: none;
+  border-radius: var(--xxs);
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
+  font-size: var(--sm);
+  font-weight: 600;
+}
+
+nav #search input::placeholder {
+  color: var(--clr-light);
+}
+
+nav #search input:focus {
+  outline: 1px solid var(--clr-accent);
+  box-shadow: 1px 1px 1px 1px var(--clr-accent);
+}
+
+
+
+#main {
+  flex: 1;
+  height: 100%;
+  padding: var(--xxs) var(--xxl);
+}
+
+#list {
+  display: flex;
+  height: 80%;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.listEl {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+/* Style the scrollbar container */
+.listEl::-webkit-scrollbar {
+  width: var(--sm);
+  background-color: var(--clr-accent);
+  border-radius: 10px;
+}
+
+/* Style the scrollbar thumb */
+.listEl::-webkit-scrollbar-thumb {
+  border-radius: var(--lg);
+  -webkit-box-shadow: inset 0 0 6px var(--clr-main);
+  background-color: var(--clr-main)
+}
+
+/* Style the scrollbar track */
+.listEl::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: var(--lg);
+  background-color: var(--clr-accent);
+}
+
+.card {
+  width: 15rem;
+  height: 20rem;
+  margin: var(--xl) var(--xxl);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: var(--sm) solid var(--clr-accent);
+  border-radius: var(--sm);
+  transform: rotate(-10deg);
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card h2 {
+  font-size: var(--sm);
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--clr-dark);
+  background-color: var(--clr-accent);
+  align-self: flex-start;
+  padding: var(--xs) var(--sm);
+  box-shadow: 0;
+}
+
+.card .image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+
+}
+
+
+
+.card .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease-in-out;
+  display: none;
+}
+
+
+
+.card p {
+  font-size: var(--sm);
+  color: var(--clr-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  background-color: var(--clr-accent);
+  align-self: end;
+  padding: var(--xs) var(--sm);
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+}
+
+.spinner {
+  border: 5px solid var(--clr-dark);
+  border-top: 5px solid var(--clr-accent);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 0.4s linear infinite;
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--clr-dark);
+    background-color: var(var(--clr-light));
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: var(--clr-light);
+    background-color: var(--clr-dark);
+  }
+}

@@ -1,0 +1,20 @@
+/*  Media quiery for mobile*/
+@media (max-width: 768px) {
+    nav {
+        padding: var(--sm) var(--md);
+    }
+
+    nav #logo {
+        box-shadow: none;
+        padding: 0;
+        margin-right: var(--xxs);
+    }
+
+    nav #logo img {
+        filter: drop-shadow(1px 1px 1px var(--clr-accent));
+    }
+
+    nav #logo h6 {
+        display: none;
+    }
+}
