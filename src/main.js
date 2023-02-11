@@ -7,12 +7,7 @@ import List from './API/List';
 // add preloader
 for (let i = 0; i < 100; i++) {
   var link = document.createElement('link');
-  const linkPreconnect = document.createElement('link');
-  linkPreconnect.rel = 'preconnect';
-  link.rel = 'preload';
-  link.href = `https://placedog.net/500/500?random=${i})}`;
-  link.as = 'image';
-  linkPreconnect.href = 'https://placedog.net';
+  link.rel = 'prefetch';
   document.head.appendChild(link);
 }
 

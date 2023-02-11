@@ -28,8 +28,6 @@ class Card {
 
     imageDiv.append(image);
     imageDiv.append(loader);
-    // add lazy loading
-    image.setAttribute('loading', 'lazy');
     imageDiv.classList.add('image');
 
     card.id = this.id;
