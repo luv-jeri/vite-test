@@ -116,12 +116,11 @@ nav #search input:focus {
 
 #list {
   display: flex;
-  height: 80%;
+  height: 85vh;
   flex: 1;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
 }
 
 
@@ -135,10 +134,12 @@ nav #search input:focus {
   width: var(--sm);
   background-color: var(--clr-accent);
   border-radius: 10px;
+ 
 }
 
 /* Style the scrollbar thumb */
 .listEl::-webkit-scrollbar-thumb {
+ 
   border-radius: var(--lg);
   -webkit-box-shadow: inset 0 0 6px var(--clr-main);
   background-color: var(--clr-main)

@@ -1,13 +1,10 @@
+import Loader from './loader.js';
+
 class List {
   constructor({ element, target, init, onLoad, onEnd, onScroll }) {
     //? check if target is a DOM element
     if (!(target instanceof HTMLElement)) {
       throw new Error('Target is not a DOM element');
-    }
-
-    //? check if element is a class
-    if (typeof element !== 'function') {
-      throw new Error('Element is not a class');
     }
 
     this.element = element;
@@ -35,9 +32,7 @@ class List {
   }
 
   _appendLoader = (el) => {
-    const loader = document.createElement('div');
-    loader.innerHTML = `<div class="spinner"></div>`;
-    loader.classList.add('loader');
+    const loader = new Loader().element;
     el.append(loader);
     // document.getElementById("logo").insertAdjacentElement('afterend', loader);
   };
@@ -65,8 +60,16 @@ class List {
   _appendElements = (data) => {
     const _data = data || this.data;
     _data.forEach((item) => {
-      const element = new this.element(item);
-      this.target.prepend(element.element);
+      if (!item) return;
+
+      if (item instanceof HTMLElement) {
+        return this.target.prepend(item);
+      }
+
+      if (typeof this.element === 'function') {
+        const element = this.element(item);
+        return this.target.prepend(element);
+      }
     });
   };
 
@@ -122,18 +125,6 @@ class List {
       throw new Error('Data is not an array');
     }
     this._data = data;
-    this._fire();
-  }
-
-  get list_data() {
-    return this._data;
-  }
-
-  set target_el(data) {
-    if (!(data instanceof HTMLElement)) {
-      throw new Error('Target is not a DOM element');
-    }
-    this._target = data;
     this._fire();
   }
 

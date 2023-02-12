@@ -1,3 +1,5 @@
+import Loader from './loader.js';
+
 class Card {
   constructor({ name, type, gender, age, description, fee, image, color, onClick }) {
     this.id = Math.floor(Math.random() * 1000000);
@@ -18,13 +20,8 @@ class Card {
     const price = document.createElement('p');
     const imageDiv = document.createElement('div');
     const image = document.createElement('img');
-    
-    const loader = document.createElement('div');
-    loader.innerHTML = `<div class="spinner"></div>`;
 
-
-    loader.classList.add('loader');
-    
+    const loader = new Loader().element
 
     imageDiv.append(image);
     imageDiv.append(loader);
@@ -55,16 +52,14 @@ class Card {
     image.alt = this.name;
 
     image.addEventListener('load', () => {
-       loader.style.display = 'none';
-       image.style.display = 'block';
+      loader.style.display = 'none';
+      image.style.display = 'block';
     });
-
 
     card.append(name, imageDiv, price);
 
     return card;
   }
-
 }
 
 export default Card;
